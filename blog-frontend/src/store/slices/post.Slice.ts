@@ -4,6 +4,7 @@ import { InitialStatePosts } from "../../interfaces/posts/post.interfaces";
 const initialState: InitialStatePosts = {
   posts: [],
   postsLatest: [],
+  postsSearch: [],
   postSelected: null,
 };
 
@@ -15,6 +16,9 @@ export const postSlice = createSlice({
       state.posts = payload;
     },
     getLatestPosts: (state, { payload }) => {
+      state.postsLatest = payload;
+    },
+    getLatestSearch: (state, { payload }) => {
       state.postsLatest = payload;
     },
     addPost: (state, { payload }) => {

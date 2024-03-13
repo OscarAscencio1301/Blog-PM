@@ -24,7 +24,7 @@ const AddPostPage = () => {
     <BlogLayout>
       <div className="flex p-5 lg:p-20 flex-col xl:flex-row gap-12 flex-1 xl:items-end">
         <div className="flex flex-col gap-4 flex-1">
-          <h3 className="text-5xl">Agregar Entrada</h3>
+          <h3 className="text-4xl">Agregar Entrada</h3>
           <form
             className="flex flex-col gap-4"
             onSubmit={handleSubmit(onSubmitForm)}

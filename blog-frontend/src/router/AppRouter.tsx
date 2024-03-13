@@ -13,7 +13,7 @@ export const AppRouter = () => {
         <Route path="/search/:term" element={<SearchPage />} />
         <Route path="/posts/" element={<PostsPage />} />
         <Route path="/posts/:id" element={<SinglePage />} />
-        <Route path="/posts/new" element={<AddPostPage />} />
+        <Route path="/post/config" element={<AddPostPage />} />
       </Routes>
     </BrowserRouter>
   );

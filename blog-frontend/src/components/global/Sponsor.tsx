@@ -11,10 +11,10 @@ export const Sponsor = () => {
       </div>
       <div className="flex  justify-center text-center gap-5">
         <Link
-          to="/posts/new"
+          to="/posts"
           className="bg-primary hover:bg-blue-950 text-white py-3 px-12 rounded-lg"
         >
-          Crear Entrada
+          Administrar Entradas
         </Link>
       </div>
     </div>

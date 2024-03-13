@@ -1,6 +1,7 @@
 export interface InitialStatePosts {
   posts: Post[];
   postsLatest: Post[];
+  postsSearch: Post[];
   postSelected: Post | null;
 }
 

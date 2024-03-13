@@ -5,7 +5,7 @@ import { InitialStatePosts, Post } from "../interfaces/posts/post.interfaces";
 import { getPosts, getLatestPosts, addPost } from "../store/slices/post.Slice";
 
 export const usePosts = () => {
-  const { postSelected, posts, postsLatest } = useSelector<
+  const { postSelected, posts, postsLatest, postsSearch } = useSelector<
     GlobalSlice,
     InitialStatePosts
   >((state) => state.posts);
@@ -37,6 +37,7 @@ export const usePosts = () => {
   return {
     posts,
     postSelected,
+    postsSearch,
     postsLatest,
     getPostsAction,
     getLatestPostsAction,

@@ -2,10 +2,10 @@ export const ArrowIcon = () => {
   return (
     <svg
       data-testid="geist-icon"
-      height="45"
+      height="60"
       strokeLinejoin="round"
       viewBox="0 0 16 16"
-      width="45"
+      width="60"
     >
       <path
         fillRule="evenodd"
