@@ -1,41 +1,38 @@
+import { FC } from "react";
+import { Post } from "../../interfaces/posts/post.interfaces";
 import { SinglePostItem } from "./SinglePostItem";
 
-export const PostTable = () => {
+interface PropsPost {
+  posts: Post[];
+}
+
+export const PostTable: FC<PropsPost> = ({ posts }) => {
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" className="px-6 py-3">
-              Product name
+              Título
             </th>
             <th scope="col" className="px-6 py-3">
-              Color
+              Autor
             </th>
             <th scope="col" className="px-6 py-3">
-              Category
+              Descripción
             </th>
             <th scope="col" className="px-6 py-3">
-              Accessories
+              Fecha
             </th>
             <th scope="col" className="px-6 py-3">
-              Available
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Price
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Weight
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Action
+              Acciones
             </th>
           </tr>
         </thead>
         <tbody>
-          <SinglePostItem />
-          <SinglePostItem />
-          <SinglePostItem />
+          {posts.map((post) => (
+            <SinglePostItem key={post.id} {...post} />
+          ))}
         </tbody>
       </table>
     </div>

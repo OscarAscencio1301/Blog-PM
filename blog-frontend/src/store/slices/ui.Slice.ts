@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { InitialStateIO } from "../../interfaces/ui/ui.unterfaces";
 
 const initialState: InitialStateIO = {
-  isOpenSidebar: true,
+  isOpenSidebar: false,
 };
 
 export const uiSlice = createSlice({

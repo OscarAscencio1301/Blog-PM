@@ -1,5 +1,6 @@
 export interface InitialStatePosts {
   posts: Post[];
+  postsLatest: Post[];
   postSelected: Post | null;
 }
 
@@ -9,6 +10,6 @@ export interface Post {
   description: string;
   image: string;
   author: string;
-  updateAt: string;
+  updatedAt: string;
   isActive?: boolean;
 }
