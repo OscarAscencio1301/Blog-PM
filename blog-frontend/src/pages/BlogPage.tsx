@@ -7,11 +7,9 @@ import { usePosts } from "../hooks/usePosts";
 import { useEffect } from "react";
 
 const BlogPage = () => {
-  const { posts, postsLatest, getLatestPostsAction, getPostsAction } =
-    usePosts();
+  const { posts, postsLatest, getPostsAction } = usePosts();
 
   useEffect(() => {
-    getLatestPostsAction();
     getPostsAction();
   }, []);
 

@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { InitialStatePosts } from "../../interfaces/posts/post.interfaces";
 
 const initialState: InitialStatePosts = {
+  isLoading: true,
   posts: [],
   postsLatest: [],
   postsSearch: [],
   postSelected: null,
+  postView: null,
 };
 
 export const postSlice = createSlice({
@@ -13,16 +15,19 @@ export const postSlice = createSlice({
   initialState,
   reducers: {
     getPosts: (state, { payload }) => {
-      state.posts = payload;
-    },
-    getLatestPosts: (state, { payload }) => {
-      state.postsLatest = payload;
+      state.isLoading = true;
+      state.posts = payload.posts;
+      state.postsLatest = payload.postsLatest;
     },
     getLatestSearch: (state, { payload }) => {
       state.postsLatest = payload;
     },
     addPost: (state, { payload }) => {
       state.posts.push(payload);
+    },
+    viewPost: (state, { payload }) => {
+      state.postView = payload;
+      state.isLoading = false;
     },
     activePost: (state, { payload }) => {
       state.postSelected = payload;
@@ -52,6 +57,6 @@ export const {
   cleanPosts,
   deletePost,
   getPosts,
-  getLatestPosts,
   updatePost,
+  viewPost,
 } = postSlice.actions;

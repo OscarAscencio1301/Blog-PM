@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   addPost,
+  addPostsMulti,
   deletePost,
   getPost,
   getPosts,
@@ -10,6 +11,7 @@ import {
 const router = Router();
 
 router.post("/", addPost);
+router.post("/multi", addPostsMulti);
 router.get("/", getPosts);
 router.get("/:id", getPost);
 router.put("/:id", updatePost);

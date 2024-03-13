@@ -12,6 +12,8 @@ class Main {
     this.app = express();
     this.port = process.env.PORT || "4000";
     this.prefix = "/api/v1";
+    this.middlewares()
+    this.routes()
   }
 
   middlewares() {

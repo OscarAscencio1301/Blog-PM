@@ -1,11 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { GlobalSlice } from "../interfaces/global/global.interfaces";
-import { postData } from "../api/posts";
-import { InitialStatePosts, Post } from "../interfaces/posts/post.interfaces";
-import { getPosts, getLatestPosts, addPost } from "../store/slices/post.Slice";
+import {
+  InitialStatePosts,
+  Post,
+  PostsResponse,
+} from "../interfaces/posts/post.interfaces";
+import { getPosts, addPost, viewPost } from "../store/slices/post.Slice";
+import blogAPI from "../api/config";
 
 export const usePosts = () => {
-  const { postSelected, posts, postsLatest, postsSearch } = useSelector<
+  const { postSelected, posts, postsLatest, postsSearch, postView, isLoading } = useSelector<
     GlobalSlice,
     InitialStatePosts
   >((state) => state.posts);
@@ -13,14 +17,19 @@ export const usePosts = () => {
 
   const getPostsAction = async () => {
     try {
-      dispatch(getPosts(postData));
+      const { data } = await blogAPI.get<PostsResponse>("/posts");
+      if (!data.ok) return;
+      dispatch(getPosts(data));
     } catch (error) {
       console.log({ error });
     }
   };
-  const getLatestPostsAction = async () => {
+
+  const getPostAction = async (id: number) => {
     try {
-      dispatch(getLatestPosts(postData.slice(0, 3)));
+      const { data } = await blogAPI.get(`/posts/${id}`);
+      if (!data.ok) return;
+      dispatch(viewPost(data.post));
     } catch (error) {
       console.log({ error });
     }
@@ -38,9 +47,11 @@ export const usePosts = () => {
     posts,
     postSelected,
     postsSearch,
+    postView,
     postsLatest,
     getPostsAction,
-    getLatestPostsAction,
-    createPostsAction
+    createPostsAction,
+    getPostAction,
+    isLoading
   };
 };

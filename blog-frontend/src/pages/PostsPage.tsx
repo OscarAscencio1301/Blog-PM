@@ -6,11 +6,10 @@ import { Title } from "../components/ui/Title";
 import { usePosts } from "../hooks/usePosts";
 
 export const PostsPage = () => {
-  const { posts, getLatestPostsAction, getPostsAction } =
+  const { posts, getPostsAction } =
   usePosts();
 
 useEffect(() => {
-  getLatestPostsAction();
   getPostsAction();
 }, []);
 
