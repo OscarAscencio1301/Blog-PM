@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 
 export const addPost = async (req: Request, resp: Response) => {
   try {
-    resp.status(201).json({ ok: true });
+    resp.status(201).json({ ok: true, msg: 0 });
   } catch (error) {
     resp.status(500).json({ ok: false });
   }

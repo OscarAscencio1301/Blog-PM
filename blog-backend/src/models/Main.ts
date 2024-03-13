@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { PostRoutes } from "../routes/posts.routes";
+import { PostsRoutes } from "../routes/posts.routes";
 import { sequelize } from "../db/config";
 
 class Main {
@@ -21,14 +21,14 @@ class Main {
   }
 
   routes() {
-    this.app.use(`${this.prefix}/posts`, PostRoutes);
+    this.app.use(`${this.prefix}/posts`, PostsRoutes);
   }
 
   listen() {
     this.app.listen(this.port, async () => {
       try {
         await sequelize.authenticate();
-        console.log("Run Database");
+        console.log("Ok Database");
       } catch (error) {
         console.error("Error Database", error);
       }
