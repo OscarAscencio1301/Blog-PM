@@ -11,6 +11,7 @@ export const SiglePostCard = () => {
       <div className="flex flex-col flex-1">
         <h3 className="text-2xl">Nueva Entrada</h3>
         <h4 className="text-lg text-primary italic">Autor</h4>
+        <h4 className="text-sm font-light text-gray-600">Hace 3 horas</h4>
         <span className="font-light text-sm text-gray-600">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
           soluta nihil illum sapiente! Nobis, voluptatibus.

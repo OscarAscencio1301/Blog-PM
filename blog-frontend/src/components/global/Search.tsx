@@ -7,6 +7,8 @@ export const Search = () => {
 
   const changeTerm = (termNew: string) => {
     setTerm(termNew);
+
+    console.log({term})
   };
 
   return (
