@@ -1,6 +1,11 @@
+import { useEffect } from "react";
 import { BlogLayout } from "../components/layouts/BlogLayout";
 
 const AddPostPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <BlogLayout>
       <div className="flex p-5 lg:p-20 gap-12 flex-1 items-end">

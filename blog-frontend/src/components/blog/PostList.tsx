@@ -1,11 +1,15 @@
+import { FC } from "react";
+import { Subtitle } from "../ui/Subtitle";
 import { SiglePostCard } from "./SiglePostCard";
 
-export const PostList = () => {
+interface PropsPost {
+  subtitle?: boolean;
+}
+
+export const PostList: FC<PropsPost> = ({ subtitle = true }) => {
   return (
     <div className="flex flex-col">
-      <h3 className="text-2xl py-2 text-center lg:text-left font-bold text-blue-900">
-        Todas las entradas
-      </h3>
+      {subtitle && <Subtitle text="Todas las entradas" />}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
         <SiglePostCard />
         <SiglePostCard />

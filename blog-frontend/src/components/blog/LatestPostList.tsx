@@ -1,9 +1,10 @@
+import { Subtitle } from "../ui/Subtitle";
 import { SiglePostCard } from "./SiglePostCard";
 
 export const LatestPostList = () => {
   return (
     <div className="flex flex-col">
-      <h3 className="text-2xl py-2 font-bold text-center lg:text-left text-blue-900">Últimas entradas</h3>
+      <Subtitle text="Últimas entradas" />
       <div className="">
         <SiglePostCard />
         <SiglePostCard />

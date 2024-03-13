@@ -1,7 +1,11 @@
+import { useEffect } from "react";
 import { BlogLayout } from "../components/layouts/BlogLayout";
 import image from "/post.png";
 
 const SinglePage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <BlogLayout>
       <div className="flex p-5 lg:p-20 gap-12">
