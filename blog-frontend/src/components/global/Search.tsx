@@ -12,11 +12,11 @@ export const Search = () => {
   };
 
   return (
-    <>
+    <div>
       {isSearch ? (
         <input
           type="search"
-          className="w-full bg-transparent border-b outline-none text-white text-lg flex-1"
+          className="w-full bg-transparent border-b outline-none text-white text-lg flex-1 min-w-80"
           placeholder="Buscar entrada"
           onChange={(e) => changeTerm(e.target.value)}
         />
@@ -25,6 +25,6 @@ export const Search = () => {
           <SearchIcon />
         </div>
       )}
-    </>
+    </div>
   );
 };

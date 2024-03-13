@@ -8,7 +8,11 @@ const initialState: InitialStateIO = {
 export const uiSlice = createSlice({
   name: "ui",
   initialState,
-  reducers: {},
+  reducers: {
+    changeStatusSidebar(state) {
+      state.isOpenSidebar = !state.isOpenSidebar;
+    },
+  },
 });
 
-export const {} = uiSlice.actions;
+export const { changeStatusSidebar } = uiSlice.actions;

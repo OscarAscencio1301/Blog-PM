@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Search } from "./Search";
+import { MenuIcon } from "../../icons/MenuIcon";
 
 export const Navbar = () => {
   return (
@@ -7,7 +8,12 @@ export const Navbar = () => {
       <Link to="/" className="text-2xl flex-1">
         Blog PM
       </Link>
-      <Search />
+      <div className="hidden xl:block">
+        <Search />
+      </div>
+      <div className=" xl:hidden block">
+        <MenuIcon />
+      </div>
     </div>
   );
 };

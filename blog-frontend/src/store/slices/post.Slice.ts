@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { InitialStatePosts } from "../../interfaces/posts/post.interfaces";
 
 const initialState: InitialStatePosts = {
-  isOpenSidebar: true,
+  posts: [],
+  postSelected: null
 };
 
 export const postSlice = createSlice({
