@@ -21,11 +21,11 @@ export const SinglePostItem: FC<Post> = ({
       <td className="px-6 py-4">{description.slice(0, 40)}...</td>
       <td className="px-6 py-4">{5}</td>
 
-      <td className="flex items-center gap-3 px-6 py-4">
+      <td className="px-6 py-4">
         <button className="font-medium text-green-600 dark:text-green-500 hover:underline">
           Editar
         </button>
-        <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+        <button className="font-medium text-blue-600 xl:mx-3 dark:text-blue-500 hover:underline">
           {isActive ? "Desactivar" : "Activar"}
         </button>
         <button className="font-medium text-red-600 dark:text-red-500 hover:underline">

@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { BlogLayout } from "../components/layouts/BlogLayout";
 import { Post } from "../interfaces/posts/post.interfaces";
 import { usePosts } from "../hooks/usePosts";
+import { toast } from "sonner";
 
 const AddPostPage = () => {
   const { createPostsAction } = usePosts();
@@ -14,6 +15,7 @@ const AddPostPage = () => {
 
   const onSubmitForm: SubmitHandler<Post> = (data) => {
     createPostsAction(data);
+    toast.success("Entrada Agregada",);
   };
 
   useEffect(() => {
