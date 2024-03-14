@@ -23,7 +23,7 @@ export const Search = () => {
         <input
           type="search"
           className="w-full bg-transparent border-b outline-none text-white text-lg flex-1 min-w-80"
-          placeholder="Buscar entrada"
+          placeholder="Buscar entradas"
           onChange={(e) => changeTerm(e.target.value)}
           value={term}
           onKeyDown={(e) => e.key === "Enter" && onSubmitSearch()}

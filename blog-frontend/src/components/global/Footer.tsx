@@ -25,7 +25,9 @@ export const Footer: FC<IFooter> = ({ sponsorVisble = true }) => {
           </h3>
         </div>
         <div className="flex flex-col gap-5">
-          <h2 className="text-3xl font-bold text-center">Enlaces</h2>
+          <h2 className="text-3xl font-bold  text-center xl:text-left">
+            Enlaces
+          </h2>
           <ol className="flex flex-col text-center xl:text-left">
             <Link
               to="/"

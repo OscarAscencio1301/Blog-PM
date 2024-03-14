@@ -3,7 +3,7 @@ import { PostList } from "../components/blog/PostList";
 import { BlogLayout } from "../components/layouts/BlogLayout";
 import { Title } from "../components/ui/Title";
 import { usePosts } from "../hooks/usePosts";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const SearchPage = () => {
   const { term = "" } = useParams();
@@ -19,8 +19,23 @@ const SearchPage = () => {
   return (
     <BlogLayout>
       <div className="px-5 lg:px-20">
-        <Title text="Entradas Encontradas" />
-        <PostList subtitle={false} posts={postsSearch} />
+        <Title text="Búsqueda de Entradas" />
+        {postsSearch.length > 0 ? (
+          <PostList subtitle={false} posts={postsSearch} />
+        ) : (
+          <div className="flex flex-col gap-5 items-center justify-center">
+            <h2 className="text-4xl">
+              No se encontraron entradas{" "}
+              <span className="block my-3">con ese término de búsqueda</span>
+            </h2>
+            <Link
+              to="/"
+              className="bg-primary hover:bg-blue-950 text-white py-3 px-12 rounded-lg"
+            >
+              Regresar
+            </Link>
+          </div>
+        )}
       </div>
     </BlogLayout>
   );
