@@ -8,7 +8,7 @@ El siguiente repositorio cuenta con 2 carpetas principales:
   - [Frontend](#frontend)
 
 ## DEMO
-[BLOG PM]([https://](https://blog-pm.vercel.app/))
+[Blog PM](https://blog-pm.vercel.app/)
 ## Capturas de pantalla
 Cuenta con una pantalla principal
 ![alt text](image.png)
