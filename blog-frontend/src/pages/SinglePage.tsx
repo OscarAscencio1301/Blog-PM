@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { BlogLayout } from "../components/layouts/BlogLayout";
-import image from "/post.png";
 import { Navigate, useParams } from "react-router-dom";
 import { usePosts } from "../hooks/usePosts";
 import { Loading } from "../components/ui/Loading";
@@ -23,7 +22,17 @@ const SinglePage = () => {
   return (
     <BlogLayout>
       <div className="flex p-5 lg:p-20 gap-12">
-        <img src={postView.image} alt="Post" className="object-cover w-1/3 rounded-lg" />
+        {postView.image ? (
+          <img
+            src={postView.image}
+            alt="Post"
+            className="object-cover w-1/3 rounded-lg"
+          />
+        ) : (
+          <div className="border w-1/3 h-40 flex justify-center items-center p-6 rounded-lg">
+            <span className="text-md text-gray-600 -rotate-45">Sin imagen</span>
+          </div>
+        )}
         <div className="flex flex-col gap-4 flex-1">
           <h3 className="text-5xl">{postView.title}</h3>
           <h4 className="text-2xl text-primary italic">{postView.author}</h4>

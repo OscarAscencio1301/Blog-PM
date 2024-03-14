@@ -8,6 +8,10 @@ const initialState: InitialStatePosts = {
   postsSearch: [],
   postSelected: null,
   postView: null,
+  totalPosts: 0,
+  ActivePosts: 0,
+  InactivePosts: 0,
+  LatestPosts: 0,
 };
 
 export const postSlice = createSlice({
@@ -47,6 +51,12 @@ export const postSlice = createSlice({
       state.posts = [];
       state.postSelected = null;
     },
+    countPosts: (state) => {
+      state.totalPosts = state.posts.length;
+      state.ActivePosts = state.posts.filter((post) => post.isActive).length;
+      state.InactivePosts = state.posts.filter((post) => !post.isActive).length;
+      state.LatestPosts = state.postsLatest.length;
+    },
   },
 });
 
@@ -59,4 +69,5 @@ export const {
   getPosts,
   updatePost,
   viewPost,
+  countPosts
 } = postSlice.actions;

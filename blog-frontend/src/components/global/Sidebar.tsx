@@ -31,7 +31,7 @@ export const Sidebar: FC<PropsSidebar> = ({}) => {
           className={`w-3/4 h-screen absolute left-0 flex flex-col gap-6 items-center bg-primary text-white p-10 overflow-y-auto`}
         >
           <h2>Oscar Ascencio</h2>
-          <ol className="flex flex-col gap-8 self-start">
+          <ol className="flex flex-col gap-8">
             <h3 className="text-xl font-bold uppercase mt-3 text-center">
               Menú
             </h3>
@@ -55,7 +55,7 @@ export const Sidebar: FC<PropsSidebar> = ({}) => {
                 Administar Entradas
               </Link>
               <Link
-                to="/posts/new"
+                to="/post/config"
                 className="text-xl font-light py-1 hover:text-2xl transition-all cursor-pointer"
               >
                 Agregar Entrada

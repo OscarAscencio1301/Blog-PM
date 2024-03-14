@@ -1,12 +1,11 @@
 import { Request, Response } from "express";
 import { Post } from "../models/Posts";
 import { postsData } from "../services/data";
-import { sequelize } from "../db/config";
 
 export const addPost = async (req: Request, resp: Response) => {
   try {
-    const { title, description, author, image } = req.body;
-    const post = Post.build({ title, description, author, image });
+    const { title, description, author } = req.body;
+    const post = Post.build({ title, description, author });
 
     await post.save();
 
@@ -19,8 +18,6 @@ export const addPost = async (req: Request, resp: Response) => {
 
 export const addPostsMulti = async (req: Request, resp: Response) => {
   try {
-    sequelize.sync({ force: false });
-
     await Post.destroy({
       where: {},
       truncate: true,
@@ -58,15 +55,6 @@ export const getPost = async (req: Request, resp: Response) => {
     }
 
     resp.status(201).json({ ok: true, post });
-  } catch (error) {
-    resp.status(500).json({ ok: false });
-  }
-};
-
-export const updatePost = async (req: Request, resp: Response) => {
-  try {
-    const { id } = req.params;
-    resp.status(201).json({ ok: true, id });
   } catch (error) {
     resp.status(500).json({ ok: false });
   }

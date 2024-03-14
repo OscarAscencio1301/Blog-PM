@@ -5,6 +5,10 @@ export interface InitialStatePosts {
   postsSearch: Post[];
   postSelected: Post | null;
   postView: Post | null;
+  totalPosts: number;
+  ActivePosts: number;
+  InactivePosts: number;
+  LatestPosts: number;
 }
 export interface PostsResponse {
   ok: boolean;

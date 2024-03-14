@@ -8,10 +8,10 @@ export const Navbar = () => {
       <Link to="/" className="text-2xl flex-1">
         Blog PM
       </Link>
-      <div className="hidden xl:block">
+      <div className="hidden lg:block">
         <Search />
       </div>
-      <div className=" xl:hidden block">
+      <div className="block lg:hidden">
         <MenuIcon />
       </div>
     </div>

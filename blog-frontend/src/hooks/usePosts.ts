@@ -5,15 +5,33 @@ import {
   Post,
   PostsResponse,
 } from "../interfaces/posts/post.interfaces";
-import { getPosts, addPost, viewPost } from "../store/slices/post.Slice";
+import {
+  getPosts,
+  addPost,
+  viewPost,
+  countPosts,
+} from "../store/slices/post.Slice";
 import blogAPI from "../api/config";
+import { useEffect } from "react";
 
 export const usePosts = () => {
-  const { postSelected, posts, postsLatest, postsSearch, postView, isLoading } = useSelector<
-    GlobalSlice,
-    InitialStatePosts
-  >((state) => state.posts);
+  const {
+    postSelected,
+    posts,
+    postsLatest,
+    postsSearch,
+    postView,
+    isLoading,
+    ActivePosts,
+    InactivePosts,
+    LatestPosts,
+    totalPosts,
+  } = useSelector<GlobalSlice, InitialStatePosts>((state) => state.posts);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(countPosts());
+  }, [posts]);
 
   const getPostsAction = async () => {
     try {
@@ -37,7 +55,11 @@ export const usePosts = () => {
 
   const createPostsAction = async (post: Post) => {
     try {
-      dispatch(addPost(post));
+      const { data } = await blogAPI.post(`/posts`, { ...post });
+
+      if (!data.ok) return;
+
+      dispatch(addPost(data.post));
     } catch (error) {
       console.log({ error });
     }
@@ -52,6 +74,10 @@ export const usePosts = () => {
     getPostsAction,
     createPostsAction,
     getPostAction,
-    isLoading
+    isLoading,
+    ActivePosts,
+    InactivePosts,
+    LatestPosts,
+    totalPosts,
   };
 };
