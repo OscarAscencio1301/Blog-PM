@@ -11,26 +11,26 @@ El siguiente repositorio cuenta con 2 carpetas principales:
 [Blog PM](https://blog-pm.vercel.app/)
 ## Capturas de pantalla
 Cuenta con una pantalla principal
-![alt text](image.png)
+![alt text](./imgs/image.png)
 Lista de Entradas
-![alt text](image-1.png)
+![alt text](./imgs/image-1.png)
 Las entradas permiten administrarse
-![alt text](image-2.png)
+![alt text](./imgs/image-2.png)
 Permite agregar entradasm con los campos obligatorios, exceptuando la imagen.
 - Título
 - Autor
 - Contenido
 - Imagen
   
-![alt text](image-3.png)
+![alt text](./imgs/image-3.png)
 Visualizamos una entrada a detalle
-![alt text](image-4.png)
+![alt text](./imgs/image-4.png)
 En la parte superior permite realizar búsqueda de entradas
 - Título
 - Autor
 - Contenido
   
-![alt text](image-5.png)
+![alt text](./imgs/image-5.png)
 ## Backend
 1. Clona el repositorio
 2. Accede a la carpeta blog-backend
