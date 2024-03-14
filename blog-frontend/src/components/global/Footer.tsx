@@ -43,7 +43,7 @@ export const Footer: FC<IFooter> = ({ sponsorVisble = true }) => {
               Administar Entradas
             </Link>
             <Link
-              to="/posts/new"
+              to="/post/config"
               className="text-xl font-light py-1 hover:text-2xl transition-all cursor-pointer"
             >
               Agregar Entrada

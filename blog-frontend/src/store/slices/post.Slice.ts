@@ -46,6 +46,9 @@ export const postSlice = createSlice({
     loadImage: (state, { payload }) => {
       state.imagePost = payload;
     },
+    loading: (state) => {
+      state.isLoading = false;
+    },
   },
 });
 
@@ -57,5 +60,6 @@ export const {
   viewPost,
   countPosts,
   loadImage,
-  getPostSearch
+  getPostSearch,
+  loading
 } = postSlice.actions;

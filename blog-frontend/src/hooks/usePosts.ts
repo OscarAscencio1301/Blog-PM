@@ -13,6 +13,7 @@ import {
   deletePost,
   loadImage,
   getPostSearch,
+  loading,
 } from "../store/slices/post.Slice";
 import blogAPI from "../api/config";
 import { useEffect } from "react";
@@ -51,6 +52,7 @@ export const usePosts = () => {
       if (!data.ok) return;
       dispatch(viewPost(data.post));
     } catch (error) {
+      dispatch(loading())
       console.log({ error });
     }
   };

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import BlogPage from "../pages/BlogPage";
 import SearchPage from "../pages/SearchPage";
 import SinglePage from "../pages/SinglePage";
@@ -14,6 +14,7 @@ export const AppRouter = () => {
         <Route path="/posts/" element={<PostsPage />} />
         <Route path="/posts/:id" element={<SinglePage />} />
         <Route path="/post/config" element={<AddPostPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );
