@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import files from "express-fileupload";
 import { PostsRoutes } from "../routes/posts.routes";
+import { authRouter } from "../routes/users.routes";
 import { sequelize } from "../db/config";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
@@ -34,6 +35,7 @@ class Main {
           },
         ],
       },
+      
       apis: ['./src/routes/*.ts'],
     };
 
@@ -54,6 +56,7 @@ class Main {
 
   routes() {
     this.app.use(`${this.prefix}/posts`, PostsRoutes);
+    this.app.use(`${this.prefix}/auth`, authRouter);
   }
 
   listen() {

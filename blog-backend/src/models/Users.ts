@@ -1,20 +1,17 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../db/config";
-export const Post = sequelize.define("post", {
-  title: {
+export const User = sequelize.define("user", {
+  name: {
     type: DataTypes.STRING,
   },
-  description: {
+  email: {
     type: DataTypes.STRING,
   },
-  author: {
-    type: DataTypes.STRING,
-  },
-  image: {
+  password: {
     type: DataTypes.STRING,
   },
   isActive: {
     type: DataTypes.BOOLEAN,
-    defaultValue: true
+    defaultValue: true,
   },
 });

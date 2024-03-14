@@ -6,9 +6,11 @@ import { usePosts } from "../hooks/usePosts";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { LoadImage } from "../components/posts/LoadImage";
+import { useAuth } from "../hooks/useAuth";
 
 const AddPostPage = () => {
   const { createPostsAction, loadImagePostAction, imagePost } = usePosts();
+  const { user } = useAuth();
   const navigate = useNavigate();
   const {
     register,
@@ -18,9 +20,9 @@ const AddPostPage = () => {
 
   const onSubmitForm: SubmitHandler<Post> = async (data) => {
     if (imagePost) {
-      createPostsAction({ ...data, image: imagePost });
+      createPostsAction({ ...data, image: imagePost, author: user?.name! });
     } else {
-      createPostsAction(data);
+      createPostsAction({...data, author: user?.name!});
     }
     toast.success("Entrada Agregada");
     navigate("/posts");
@@ -55,17 +57,6 @@ const AddPostPage = () => {
               />
               {!!errors.title && (
                 <span className="text-red-700">{"El título es requerido"}</span>
-              )}
-            </div>
-            <div className="flex flex-col gap-2">
-              <label>Autor</label>
-              <input
-                type="text"
-                className="border outline-none p-2 rounded-lg"
-                {...register("author", { required: true })}
-              />
-              {!!errors.author && (
-                <span className="text-red-700">{"El autor es requerido"}</span>
               )}
             </div>
             <div className="flex flex-col gap-2">
