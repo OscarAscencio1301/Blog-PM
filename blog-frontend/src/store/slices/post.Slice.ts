@@ -22,8 +22,8 @@ export const postSlice = createSlice({
       state.postsLatest = payload.postsLatest;
       state.imagePost = undefined;
     },
-    getLatestSearch: (state, { payload }) => {
-      state.postsLatest = payload;
+    getPostSearch: (state, { payload }) => {
+      state.postsSearch = payload;
     },
     addPost: (state, { payload }) => {
       state.posts.push(payload);
@@ -57,4 +57,5 @@ export const {
   viewPost,
   countPosts,
   loadImage,
+  getPostSearch
 } = postSlice.actions;

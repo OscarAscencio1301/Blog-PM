@@ -12,6 +12,7 @@ import {
   countPosts,
   deletePost,
   loadImage,
+  getPostSearch,
 } from "../store/slices/post.Slice";
 import blogAPI from "../api/config";
 import { useEffect } from "react";
@@ -89,6 +90,16 @@ export const usePosts = () => {
     }
   };
 
+  const searchPostsAction = async (term: string) => {
+    try {
+      const { data } = await blogAPI.get(`/posts/search/post?query=${term}`);
+      if (!data.ok) return;
+      dispatch(getPostSearch(data.posts));
+    } catch (error) {
+      return null;
+    }
+  };
+
   return {
     posts,
     postSelected,
@@ -103,6 +114,7 @@ export const usePosts = () => {
     totalPosts,
     deletePostAction,
     loadImagePostAction,
-    imagePost
+    imagePost,
+    searchPostsAction,
   };
 };

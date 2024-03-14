@@ -4,6 +4,7 @@ import { postsData } from "../services/data";
 import { v2 as cloudinary } from "cloudinary";
 import { UploadedFile } from "express-fileupload";
 import dotenv from "dotenv";
+import { Op } from "sequelize";
 dotenv.config();
 cloudinary.config(process.env.CLOUDINARY_URL!);
 
@@ -107,7 +108,44 @@ export const loadImage = async (req: Request, resp: Response) => {
       image: secure_url,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
+    resp.status(500).json({ ok: false });
+  }
+};
+
+export const searchPosts = async (req: Request, resp: Response) => {
+  try {
+    const { query } = req.query;
+
+    const posts = await Post.findAll({
+      where: {
+        [Op.or]: [
+          {
+            author: {
+              [Op.like]: `%${query}%`,
+            },
+          },
+          {
+            title: {
+              [Op.like]: `%${query}%`,
+            },
+          },
+          {
+            description: {
+              [Op.like]: `%${query}%`,
+            },
+          },
+        ],
+      },
+    });
+
+    resp.status(200).json({
+      ok: true,
+      query,
+      posts,
+    });
+  } catch (error) {
+    console.log(error);
     resp.status(500).json({ ok: false });
   }
 };

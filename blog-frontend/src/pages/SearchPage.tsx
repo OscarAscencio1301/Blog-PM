@@ -3,9 +3,15 @@ import { PostList } from "../components/blog/PostList";
 import { BlogLayout } from "../components/layouts/BlogLayout";
 import { Title } from "../components/ui/Title";
 import { usePosts } from "../hooks/usePosts";
+import { useParams } from "react-router-dom";
 
 const SearchPage = () => {
-  const { postsSearch } = usePosts();
+  const { term = "" } = useParams();
+  const { postsSearch, searchPostsAction } = usePosts();
+
+  useEffect(() => {
+    searchPostsAction(term);
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
