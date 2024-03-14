@@ -36,18 +36,13 @@ export const Sidebar: FC<PropsSidebar> = ({}) => {
               Menú
             </h3>
             <ol className="flex flex-col gap-5 text-center xl:text-left">
-              <a
-                href="/#posts"
+              <Link
+                to="/"
                 className="text-xl font-light py-1 hover:text-2xl transition-all cursor-pointer"
               >
-                Entradas
-              </a>
-              <a
-                href="/#posts"
-                className="text-xl font-light py-1 hover:text-2xl transition-all cursor-pointer"
-              >
-                Últimas Entradas
-              </a>
+                Blog
+              </Link>
+
               <Link
                 to="/posts"
                 className="text-xl font-light py-1 hover:text-2xl transition-all cursor-pointer"
@@ -55,7 +50,7 @@ export const Sidebar: FC<PropsSidebar> = ({}) => {
                 Administar Entradas
               </Link>
               <Link
-                to="/post/config"
+                to="/posts/new"
                 className="text-xl font-light py-1 hover:text-2xl transition-all cursor-pointer"
               >
                 Agregar Entrada

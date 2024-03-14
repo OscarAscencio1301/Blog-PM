@@ -27,18 +27,13 @@ export const Footer: FC<IFooter> = ({ sponsorVisble = true }) => {
         <div className="flex flex-col gap-5">
           <h2 className="text-3xl font-bold text-center">Enlaces</h2>
           <ol className="flex flex-col text-center xl:text-left">
-            <a
-              href="/#posts"
+            <Link
+              to="/"
               className="text-xl font-light py-1 hover:text-2xl transition-all cursor-pointer"
             >
-              Entradas
-            </a>
-            <a
-              href="/#posts"
-              className="text-xl font-light py-1 hover:text-2xl transition-all cursor-pointer"
-            >
-              Últimas Entradas
-            </a>
+              Blog
+            </Link>
+
             <Link
               to="/posts"
               className="text-xl font-light py-1 hover:text-2xl transition-all cursor-pointer"
