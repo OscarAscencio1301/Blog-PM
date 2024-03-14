@@ -35,6 +35,7 @@ class Main {
     this.app.listen(this.port, async () => {
       try {
         await sequelize.authenticate();
+        await sequelize.sync()
         console.log("Ok Database");
       } catch (error) {
         console.error("Error Database", error);

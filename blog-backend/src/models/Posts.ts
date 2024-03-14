@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../db/config";
-export const Post = sequelize.define("posts", {
+export const Post = sequelize.define("post", {
   title: {
     type: DataTypes.STRING,
   },
