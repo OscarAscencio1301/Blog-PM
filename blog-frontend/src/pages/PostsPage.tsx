@@ -23,7 +23,7 @@ export const PostsPage = () => {
         <DashboardList />
         <Link
           to="/post/config"
-          className="bg-primary text-center w-1/5 hover:bg-blue-950 text-white py-3 px-12 rounded-lg"
+          className="bg-primary text-center w-full xl:w-1/5 hover:bg-blue-950 text-white py-3 px-12 rounded-lg"
         >
           Agregar Entrada
         </Link>
