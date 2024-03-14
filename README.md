@@ -14,6 +14,8 @@ Cuenta con una pantalla principal
 ![alt text](./imgs/image.png)
 Lista de Entradas
 ![alt text](./imgs/image-1.png)
+Al identificarnos podemos administrar nuestras entradas
+![alt text](./imgs/image-5.png)
 Las entradas permiten administrarse
 ![alt text](./imgs/image-2.png)
 Permite agregar entradasm con los campos obligatorios, exceptuando la imagen.
@@ -30,7 +32,7 @@ En la parte superior permite realizar búsqueda de entradas
 - Autor
 - Contenido
   
-![alt text](./imgs/image-5.png)
+![alt text](./imgs/image-7.png)
 ## Backend
 1. Clona el repositorio
 2. Accede a la carpeta blog-backend
@@ -46,6 +48,7 @@ DATABASE_PASSWORD=CONTRASEÑA_BASE_DE_DATOS
 DATABASE_PORT=PUERTO_ALOJADO_BASE_DE_DATOS
 HOSTNAME=HOST
 CLOUDINARY_URL=KEY_CLOUDINARY
+SECRET_KEY=CLAVE_JWT
 ```
 4. Asegúrate de tener Node.js instalado (versión >= 18.18.2).
 5. Es necesario contar con una base de datos en MySQL

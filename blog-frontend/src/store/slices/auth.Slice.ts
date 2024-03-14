@@ -27,8 +27,6 @@ export const authSlice = createSlice({
     },
     analyzingUser: (state) => {
       state.statusAuth = "analyzing";
-      state.user = undefined;
-      state.error = undefined;
     },
   },
 });

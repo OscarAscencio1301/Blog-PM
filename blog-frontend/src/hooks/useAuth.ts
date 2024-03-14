@@ -3,6 +3,7 @@ import { GlobalSlice } from "../interfaces/global/global.interfaces";
 import { InitialStateAuth, User } from "../interfaces/auth/auth.interfaces";
 import {
   analyzingUser,
+  errorUser,
   loginUser,
   logoutUser,
 } from "../store/slices/auth.Slice";
@@ -20,13 +21,16 @@ export const useAuth = () => {
     try {
       const { data } = await blogAPI.post("/auth/login", { ...user });
 
-      if (!data.ok) return;
-
-      localStorage.setItem("jwt", data.token);
-      dispatch(loginUser(data.user));
+      if (data.ok) {
+        localStorage.setItem("jwt", data.token);
+        dispatch(loginUser(data.user));
+      }
     } catch (error) {
       console.log(error);
-      dispatch(logoutUser());
+      dispatch(errorUser("Credenciales Incorrectales"));
+      setTimeout(() => {
+        dispatch(logoutUser());
+      }, 3000);
     }
   };
 
@@ -35,13 +39,16 @@ export const useAuth = () => {
     try {
       const { data } = await blogAPI.post("/auth/register", { ...user });
 
-      if (!data.ok) return;
-
-      localStorage.setItem("jwt", data.token);
-      dispatch(loginUser(data.user));
+      if (data.ok) {
+        localStorage.setItem("jwt", data.token);
+        dispatch(loginUser(data.user));
+      }
     } catch (error) {
       console.log(error);
-      dispatch(logoutUser());
+      dispatch(errorUser("La cuenta ya existe"));
+      setTimeout(() => {
+        dispatch(logoutUser());
+      }, 3000);
     }
   };
 
@@ -53,10 +60,10 @@ export const useAuth = () => {
     try {
       const { data } = await blogAPI.get("/auth/renew");
 
-      if (!data.ok) return;
-
-      localStorage.setItem("jwt", data.token);
-      dispatch(loginUser(data.user));
+      if (data.ok) {
+        localStorage.setItem("jwt", data.token);
+        dispatch(loginUser(data.user));
+      }
     } catch (error) {
       console.log(error);
       dispatch(logoutUser());
