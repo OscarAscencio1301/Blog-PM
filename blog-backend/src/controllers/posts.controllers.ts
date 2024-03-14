@@ -54,7 +54,7 @@ export const getPost = async (req: Request, resp: Response) => {
     const post = await Post.findByPk(id);
 
     if (!post) {
-      return resp.status(500).json({
+      return resp.status(400).json({
         ok: false,
         msg: "The id is invalid",
       });
@@ -73,7 +73,7 @@ export const deletePost = async (req: Request, resp: Response) => {
     const post = await Post.findByPk(id);
 
     if (!post) {
-      return resp.status(500).json({
+      return resp.status(400).json({
         ok: false,
         msg: "The id is invalid",
       });
