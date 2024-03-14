@@ -48,12 +48,7 @@ HOSTNAME=HOST
 CLOUDINARY_URL=KEY_CLOUDINARY
 ```
 4. Asegúrate de tener Node.js instalado (versión >= 18.18.2).
-5. Es necesario contar con MySQL instalado
-```bash
- # Crear Base de datos
- create database blogPM;
- use blogPM;
-```
+5. Es necesario contar con una base de datos en MySQL
 6. Ejecuta los siguientes comandos para su ejecución:
 ```bash
 # Instalar Dependencias
