@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import files from "express-fileupload";
 import { PostsRoutes } from "../routes/posts.routes";
 import { sequelize } from "../db/config";
 
@@ -20,6 +21,10 @@ class Main {
     this.app.use(express.json());
     this.app.use(express.static("public"));
     this.app.use(cors());
+    this.app.use(files({
+      useTempFiles: true,
+      createParentPath: true
+    }))
   }
 
   routes() {

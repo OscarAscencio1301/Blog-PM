@@ -4,14 +4,14 @@ import { DashboardList } from "../components/posts/DashboardList";
 import { PostTable } from "../components/posts/PostTable";
 import { Title } from "../components/ui/Title";
 import { usePosts } from "../hooks/usePosts";
+import { Link } from "react-router-dom";
 
 export const PostsPage = () => {
-  const { posts, getPostsAction } =
-  usePosts();
+  const { posts, getPostsAction } = usePosts();
 
-useEffect(() => {
-  getPostsAction();
-}, []);
+  useEffect(() => {
+    getPostsAction();
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,7 +21,13 @@ useEffect(() => {
       <Title text="Administrar Entradas" />
       <div className="px-5 flex flex-col gap-10 lg:px-20">
         <DashboardList />
-        <PostTable posts={posts}/>
+        <Link
+          to="/post/config"
+          className="bg-primary text-center w-1/5 hover:bg-blue-950 text-white py-3 px-12 rounded-lg"
+        >
+          Agregar Entrada
+        </Link>
+        <PostTable posts={posts} />
       </div>
     </BlogLayout>
   );

@@ -9,8 +9,6 @@ const initialState: InitialStatePosts = {
   postSelected: null,
   postView: null,
   totalPosts: 0,
-  ActivePosts: 0,
-  InactivePosts: 0,
   LatestPosts: 0,
 };
 
@@ -22,12 +20,14 @@ export const postSlice = createSlice({
       state.isLoading = true;
       state.posts = payload.posts;
       state.postsLatest = payload.postsLatest;
+      state.imagePost = undefined;
     },
     getLatestSearch: (state, { payload }) => {
       state.postsLatest = payload;
     },
     addPost: (state, { payload }) => {
       state.posts.push(payload);
+      state.imagePost = undefined;
     },
     viewPost: (state, { payload }) => {
       state.postView = payload;
@@ -36,26 +36,15 @@ export const postSlice = createSlice({
     activePost: (state, { payload }) => {
       state.postSelected = payload;
     },
-    updatePost: (state, { payload }) => {
-      state.posts = state.posts.map((post) =>
-        post.id === payload.id ? payload : post
-      );
-    },
     deletePost: (state, { payload }) => {
-      state.posts = state.posts.filter((post) => post.id !== payload.id);
-    },
-    cleanPost: (state) => {
-      state.postSelected = null;
-    },
-    cleanPosts: (state) => {
-      state.posts = [];
-      state.postSelected = null;
+      state.posts = state.posts.filter((post) => post.id !== payload);
     },
     countPosts: (state) => {
       state.totalPosts = state.posts.length;
-      state.ActivePosts = state.posts.filter((post) => post.isActive).length;
-      state.InactivePosts = state.posts.filter((post) => !post.isActive).length;
       state.LatestPosts = state.postsLatest.length;
+    },
+    loadImage: (state, { payload }) => {
+      state.imagePost = payload;
     },
   },
 });
@@ -63,11 +52,9 @@ export const postSlice = createSlice({
 export const {
   activePost,
   addPost,
-  cleanPost,
-  cleanPosts,
   deletePost,
   getPosts,
-  updatePost,
   viewPost,
-  countPosts
+  countPosts,
+  loadImage,
 } = postSlice.actions;

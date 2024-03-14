@@ -10,6 +10,8 @@ import {
   addPost,
   viewPost,
   countPosts,
+  deletePost,
+  loadImage,
 } from "../store/slices/post.Slice";
 import blogAPI from "../api/config";
 import { useEffect } from "react";
@@ -22,10 +24,9 @@ export const usePosts = () => {
     postsSearch,
     postView,
     isLoading,
-    ActivePosts,
-    InactivePosts,
     LatestPosts,
     totalPosts,
+    imagePost,
   } = useSelector<GlobalSlice, InitialStatePosts>((state) => state.posts);
   const dispatch = useDispatch();
 
@@ -65,6 +66,29 @@ export const usePosts = () => {
     }
   };
 
+  const deletePostAction = async (id: number) => {
+    try {
+      const { data } = await blogAPI.delete(`/posts/${id}`);
+      if (!data.ok) return;
+      dispatch(deletePost(id));
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
+  const loadImagePostAction = async (image: File) => {
+    try {
+      const form = new FormData();
+      form.append("image", image);
+
+      const { data } = await blogAPI.post(`/posts/image`, form);
+      if (!data.ok) return;
+      dispatch(loadImage(data.image));
+    } catch (error) {
+      return null;
+    }
+  };
+
   return {
     posts,
     postSelected,
@@ -75,9 +99,10 @@ export const usePosts = () => {
     createPostsAction,
     getPostAction,
     isLoading,
-    ActivePosts,
-    InactivePosts,
     LatestPosts,
     totalPosts,
+    deletePostAction,
+    loadImagePostAction,
+    imagePost
   };
 };

@@ -19,8 +19,8 @@ export const SiglePostCard: FC<Post> = ({
       {image ? (
         <img src={image} alt="Post" className="object-cover w-1/3 rounded-lg" />
       ) : (
-        <div className="border w-1/3 h-40 flex justify-center items-center p-6 rounded-lg">
-          <span className="text-md text-gray-600 -rotate-45">Sin imagen</span>
+        <div className="border w-1/3 h-40 flex justify-center items-center p-6 bg-gray-600/10 rounded-lg">
+          <span className="text-md text-center text-gray-600/50">Sin imagen</span>
         </div>
       )}
       <div className="flex flex-col flex-1">

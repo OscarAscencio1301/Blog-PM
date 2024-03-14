@@ -1,13 +1,12 @@
 export interface InitialStatePosts {
   isLoading: boolean;
+  imagePost?: string,
   posts: Post[];
   postsLatest: Post[];
   postsSearch: Post[];
   postSelected: Post | null;
   postView: Post | null;
   totalPosts: number;
-  ActivePosts: number;
-  InactivePosts: number;
   LatestPosts: number;
 }
 export interface PostsResponse {

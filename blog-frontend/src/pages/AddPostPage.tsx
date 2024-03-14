@@ -1,21 +1,36 @@
-import { useEffect } from "react";
+import { ChangeEvent, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { BlogLayout } from "../components/layouts/BlogLayout";
 import { Post } from "../interfaces/posts/post.interfaces";
 import { usePosts } from "../hooks/usePosts";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
+import { LoadImage } from "../components/posts/LoadImage";
 
 const AddPostPage = () => {
-  const { createPostsAction } = usePosts();
+  const { createPostsAction, loadImagePostAction, imagePost } = usePosts();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Post>({});
 
-  const onSubmitForm: SubmitHandler<Post> = (data) => {
-    createPostsAction(data);
-    toast.success("Entrada Agregada",);
+  const onSubmitForm: SubmitHandler<Post> = async (data) => {
+    if (imagePost) {
+      createPostsAction({ ...data, image: imagePost });
+    } else {
+      createPostsAction(data);
+    }
+    toast.success("Entrada Agregada");
+    navigate("/posts");
+  };
+
+  const onLoadImage = ({
+    target: { files },
+  }: ChangeEvent<HTMLInputElement>) => {
+    if (!files) return;
+    loadImagePostAction(files[0]);
   };
 
   useEffect(() => {
@@ -71,10 +86,7 @@ const AddPostPage = () => {
             </button>
           </form>
         </div>
-        <div className="bg-gray-600/10 w-full xl:w-1/3 h-96 rounded-lg flex flex-col gap-6 justify-center items-center">
-          <h2 className="text-gray-600/50 text-4xl">Agregar imagen</h2>
-          <h2 className="text-gray-600/50 text-4xl">1000 X 825</h2>
-        </div>
+        <LoadImage onLoadImage={onLoadImage} />
       </div>
     </BlogLayout>
   );
